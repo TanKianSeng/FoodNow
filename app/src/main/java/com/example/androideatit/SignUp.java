@@ -40,23 +40,20 @@ public class SignUp extends AppCompatActivity {
             mDialog.setMessage("Please waiting...");
             mDialog.show();
 
-            table_user.addValueEventListener(new ValueEventListener() {
+            table_user.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     mDialog.dismiss();
 
                     if (binding.editTextPhoneNoRegister.getText().toString().isEmpty() || binding.editTextNameRegister.getText().toString().isEmpty() || binding.editTextPasswordRegister.getText().toString().isEmpty()){
-                        Toast.makeText(SignUp.this, "Please do not empty input.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignUp.this, "Please type in correctly.", Toast.LENGTH_SHORT).show();
                     }else{
                         if(snapshot.child(binding.editTextPhoneNoRegister.getText().toString()).exists()){
                             Toast.makeText(SignUp.this, "This phone Number already registered, please use another one.", Toast.LENGTH_SHORT).show();
                         }else{
                             User user = new User(binding.editTextNameRegister.getText().toString(),binding.editTextPasswordRegister.getText().toString());
                             table_user.child(binding.editTextPhoneNoRegister.getText().toString()).setValue(user);
-                            Toast.makeText(SignUp.this, "New account create successful, welcome to AndroidEatIt"+"Mr/Ms "+binding.editTextNameRegister.getText().toString()+".", Toast.LENGTH_SHORT).show();
-                            binding.editTextNameRegister.setText(null);
-                            binding.editTextPhoneNoRegister.setText(null);
-                            binding.editTextPasswordRegister.setText(null);
+                            Toast.makeText(SignUp.this, "New account create successful, welcome to AndroidEatIt"+" Mr/Ms "+binding.editTextNameRegister.getText().toString()+".", Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(SignUp.this,MainActivity.class);
                             startActivity(intent);

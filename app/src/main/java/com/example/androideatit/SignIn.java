@@ -40,9 +40,9 @@ public class SignIn extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference table_user = database.getReference("User");
 
-        //phoneNo and password
-        binding.editTextPhoneNo.setText("0167632147");
-        binding.editTextPassword.setText("1111");
+        //init phoneNo and password
+        binding.editTextPhoneNo.setText("0000");
+        binding.editTextPassword.setText("0000");
 
         binding.buttonSignIn.setOnClickListener(v -> {
 
@@ -50,14 +50,16 @@ public class SignIn extends AppCompatActivity {
             mDialog.setMessage("Please waiting...");
             mDialog.show();
 
-            table_user.addValueEventListener(new ValueEventListener() {
+            table_user.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    //check if user is not exist in database
                     mDialog.dismiss();
-                    try {
+
+                    if(binding.editTextPhoneNo.getText().toString().isEmpty() || binding.editTextPassword.getText().toString().isEmpty()){
+                        Toast.makeText(SignIn.this, "Please type in correctly.", Toast.LENGTH_SHORT).show();
+                    }else{
                         if (snapshot.child(binding.editTextPhoneNo.getText().toString()).exists()){
-                            //user account existed
+                            //user account exist
                             mDialog.dismiss();
                             User user = snapshot.child(binding.editTextPhoneNo.getText().toString()).getValue(User.class);
 
@@ -81,10 +83,8 @@ public class SignIn extends AppCompatActivity {
                             Toast.makeText(SignIn.this, "User does not exist in database.", Toast.LENGTH_SHORT).show();
                         }
                     }
-                    catch(Exception e) {
-                        //user leave blank to login
-                        Toast.makeText(SignIn.this, "Please type in correctly.", Toast.LENGTH_SHORT).show();
-                    }
+
+
 
                 }
                 @Override
