@@ -15,7 +15,6 @@ import com.example.androideatit.Model.Category;
 import com.example.androideatit.ViewHolder.MenuViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -63,7 +62,11 @@ public class Home extends AppCompatActivity {
         category = database.getReference("Category");
 
         binding.appBarHome.toolbar.setTitle("Menu");
-        binding.appBarHome.fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show());
+        binding.appBarHome.fab.setOnClickListener(view -> {
+            //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            Intent cartIntent = new Intent(Home.this,Cart.class);
+            startActivity(cartIntent);
+        });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
 

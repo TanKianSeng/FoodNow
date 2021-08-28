@@ -62,6 +62,7 @@ public class SignIn extends AppCompatActivity {
                             //user account exist
                             mDialog.dismiss();
                             User user = snapshot.child(binding.editTextPhoneNo.getText().toString()).getValue(User.class);
+                            user.setPhone(binding.editTextPhoneNo.getText().toString());
 
                             if (Objects.requireNonNull(user).getPassword().equals(binding.editTextPassword.getText().toString())){
                                 //if user password correct
