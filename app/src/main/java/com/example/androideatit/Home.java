@@ -45,13 +45,14 @@ public class Home extends AppCompatActivity {
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
+    ActivityHomeBinding binding;
 
     FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        com.example.androideatit.databinding.ActivityHomeBinding binding = ActivityHomeBinding.inflate(getLayoutInflater());
+        binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarHome.toolbar);
@@ -63,7 +64,6 @@ public class Home extends AppCompatActivity {
 
         binding.appBarHome.toolbar.setTitle("Menu");
         binding.appBarHome.fab.setOnClickListener(view -> {
-            //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             Intent cartIntent = new Intent(Home.this,Cart.class);
             startActivity(cartIntent);
         });
@@ -110,11 +110,10 @@ public class Home extends AppCompatActivity {
         adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(options){
 
             @Override
-            public void onBindViewHolder(@NonNull MenuViewHolder viewHolder, int position, @NonNull Category model) {
-                viewHolder.menu_name.setText(model.getName());
-                Picasso.with(getBaseContext()).load(model.getImage()).fit().into(viewHolder.menu_image);
+            public void onBindViewHolder(@NonNull MenuViewHolder viewHolder, int position, @NonNull Category category) {
+                viewHolder.menu_name.setText(category.getName());
+                Picasso.with(getBaseContext()).load(category.getImage()).fit().into(viewHolder.menu_image);
 
-                //final Category clickItem = model;
                 viewHolder.setItemClickListener((view, position1, isLongClick) -> {
                     //get Category ID and sent it to new Activity
                     //Toast.makeText(Home.this, "" + a, Toast.LENGTH_SHORT).show();//----test code for onClick functionality
