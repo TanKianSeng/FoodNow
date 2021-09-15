@@ -1,17 +1,16 @@
 package com.example.androideatit;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-
 import com.example.androideatit.Common.Common;
 import com.example.androideatit.Model.Request;
-import com.example.androideatit.ViewHolder.OrderViewHolder;
 import com.example.androideatit.databinding.ActivityOrderStatusBinding;
 import com.example.androideatit.databinding.OrderLayoutBinding;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -68,11 +67,8 @@ public class OrderStatus extends AppCompatActivity {
 
                 return new OrderViewHolder(orderLayoutBinding);
             }
-
-
         };
         binding.listOrders.setAdapter(adapter);
-
 
     }
     public static class OrderViewHolder extends RecyclerView.ViewHolder{

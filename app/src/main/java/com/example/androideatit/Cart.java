@@ -61,7 +61,10 @@ public class Cart extends AppCompatActivity {
         btnPlace.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (cart.isEmpty()){
+                    Toast.makeText(getApplicationContext(),"No order found.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 showAlertDialog();
             }
         });
