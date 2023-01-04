@@ -68,6 +68,7 @@ public class Cart extends AppCompatActivity {
                 showAlertDialog();
             }
         });
+
         loadListFood();
 
     }

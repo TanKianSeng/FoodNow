@@ -166,7 +166,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         int id = item.getItemId();
 
         if (id == R.id.navIcon_home){
-            Toast.makeText(getApplicationContext(), "clicked", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "clicked", Toast.LENGTH_SHORT).show();
         }else if(id == R.id.navIcon_cart){
             Intent cartIntent = new Intent(Home.this,Cart.class);
             startActivity(cartIntent);
@@ -174,7 +174,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             Intent orderIntent = new Intent(Home.this,OrderStatus.class);
             startActivity(orderIntent);
         }else if(id == R.id.navIcon_logout){
-            Intent signIntent = new Intent(Home.this,SignIn.class);
+            Intent signIntent = new Intent(Home.this,MainActivity.class);
             signIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(signIntent);
         }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidEatit</string>
+    <string name="app_name">FoodNow</string>
     <string name="textview">No matter where you are: whether you are at home, or in the office, or on the beach - we you find you and we will feed you</string>
     <string name="imageView">Logo</string>
     <string name="buttonSignUp">SIGN UP</string>

@@ -41,8 +41,8 @@ public class SignIn extends AppCompatActivity {
         DatabaseReference table_user = database.getReference("User");
 
         //init phoneNo and password
-        binding.editTextPhoneNo.setText("0000");
-        binding.editTextPassword.setText("0000");
+        //binding.editTextPhoneNo.setText("0000");
+        //binding.editTextPassword.setText("0000");
 
         binding.buttonSignIn.setOnClickListener(v -> {
 
