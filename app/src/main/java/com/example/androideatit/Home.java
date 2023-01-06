@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androideatit.Common.Common;
 import com.example.androideatit.Model.Category;
+import com.example.androideatit.Service.ListenOrder;
 import com.example.androideatit.ViewHolder.MenuViewHolder;
 import com.example.androideatit.databinding.ActivityHomeBinding;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -109,6 +110,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         recyclerView.setLayoutManager(layoutManager);
         
         loadMenu();
+
+        Intent service = new Intent(Home.this, ListenOrder.class);
+        startService(service);
 
     }
 

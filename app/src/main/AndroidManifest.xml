@@ -11,6 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidEatit"
         tools:replace="android:theme">
+        <service
+            android:name=".ListenOrder"
+            android:enabled="true"
+            android:exported="true"></service>
+
         <activity
             android:name=".OrderStatus"
             android:exported="true" />
