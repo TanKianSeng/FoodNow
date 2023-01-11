@@ -67,10 +67,11 @@ public class ListenOrder extends Service implements ChildEventListener {
     private void showNotification(String key, Request request) {
         Intent intent = new Intent(getBaseContext(), OrderStatus.class);
         intent.putExtra("userPhone",request.getPhone());
-        PendingIntent contentIntent = PendingIntent.getActivity(getBaseContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent contentIntent = PendingIntent.getActivity(getBaseContext(),
+                0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            NotificationChannel channel= new NotificationChannel("foodStatus","foodStatus",NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel= new NotificationChannel("foodStatus","foodStatus",NotificationManager.IMPORTANCE_HIGH);
             NotificationManager notificationManager=getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
@@ -81,6 +82,7 @@ public class ListenOrder extends Service implements ChildEventListener {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getBaseContext(),"foodStatus");
         builder.setAutoCancel(true)
                 .setDefaults(Notification.DEFAULT_ALL)
+                .setWhen(System.currentTimeMillis())
                 .setTicker("FoodNow")
                 .setContentInfo("Your order was updated")
                 .setContentText("Order #" +key+ "was update status to "+ Common.convertCodeToStatus(request.getStatus()))

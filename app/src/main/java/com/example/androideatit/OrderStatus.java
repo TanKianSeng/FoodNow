@@ -1,6 +1,6 @@
 package com.example.androideatit;
 
-import static com.example.androideatit.Common.Common.convertCodeToStatus;
+
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,8 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.androideatit.Common.Common;
 import com.example.androideatit.Model.Request;
 import com.example.androideatit.ViewHolder.OrderViewHolder;
-import com.example.androideatit.databinding.ActivityOrderStatusBinding;
-import com.example.androideatit.databinding.OrderLayoutBinding;
+
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -64,10 +63,10 @@ public class OrderStatus extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull OrderViewHolder viewHolder, int position, @NonNull Request model) {
                 viewHolder.txtOrderId.setText(adapter.getRef(position).getKey());
-                viewHolder.txtOrderStatus.setText(convertCodeToStatus(model.getStatus()));
+                viewHolder.txtOrderStatus.setText(Common.convertCodeToStatus(model.getStatus()));
                 viewHolder.txtOrderAddress.setText(model.getAddress());
                 viewHolder.txtOrderPhone.setText(model.getPhone());
-                viewHolder.setItemClickListener((view, position1, isLongClick) -> Toast.makeText(OrderStatus.this, "clicked", Toast.LENGTH_SHORT).show());
+                viewHolder.setItemClickListener((view, position1, isLongClick) -> Toast.makeText(OrderStatus.this, "under development...", Toast.LENGTH_SHORT).show());
             }
 
             @NonNull
